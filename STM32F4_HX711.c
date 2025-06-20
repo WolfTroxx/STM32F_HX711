@@ -38,13 +38,4 @@ uint8_t Data_Reader_ShiftIn(uint16_t DATA, uint16_t CLOCK) { //data receiver shi
   }
 return ByteOut;
 }
-uint8_t Data_Reader_ShiftIn(uint16_t DATA, uint16_t CLOCK) { //data receiver shifter, moves MSB to the left
-  uint8_t ByteOut;
-  for (int i=0; i<8; i++) {
-    HAL_GPIO_WritePin(GPIOC, CLOCK, 1);
-    us_Delay(1);
-    ByteOut|=HAL_GPIO_ReadPin(GPIOC, DATA)<<(7-i);
-    HAL_GPIO_WritePin(GPIOC, CLOCK, 0);
-  }
-return ByteOut;
-} 
+
